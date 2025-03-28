@@ -1,0 +1,105 @@
+.block_mokitul #mokitul_chat_log {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    max-height: 32rem;
+    overflow-y: scroll;
+}
+
+.block_mokitul #mokitul_chat_log::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .block_mokitul #mokitul_chat_log {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+.block_mokitul .chat_message {
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.block_mokitul .chat_message_bot {
+    background-color: #f8f9fa;
+}
+
+.block_mokitul .chat_message_user {
+    background-color: #f98012;
+    color: white;
+}
+
+.block_mokitul #mokitul_chat_input {
+    border-radius: 1rem;
+    border-color: #dee2e6;
+    border-style: solid;
+    border-width: .06rem;
+    padding: .25rem .5rem;
+    width: 100%;
+}
+
+.block_mokitul #mokitul_chat_input:focus-visible{
+    border-color: #f98012;
+    outline: none;
+}
+
+.block_mokitul #button_bar{
+    display: flex;
+    gap: 5px;
+}
+
+.block_mokitul .chat_button{
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    background: white;
+    flex-grow: 1;
+    border-radius: .5rem;
+    border-color: #dee2e6;
+    border-style: solid;
+    border-width: 0.06rem;
+}
+
+.block_mokitul .chat_button:hover{
+    background: #f98012;
+}
+
+.block_mokitul .chat_button path{
+    fill: #ced4da;
+}
+
+.block_mokitul .chat_button:hover path{
+    fill: white;
+}
+
+.block_mokitul .chat_provider_select_wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 6;
+    border-style: solid;
+    border-radius: .5rem;
+    border-width: .06rem;
+    padding: .2rem;
+    color: white;
+    background: #0f9e7b;
+}
+
+.block_mokitul .chat_provider_icon {
+    aspect-ratio: 1 / 1;
+    padding: .2rem;
+    height: 100%;
+    display: flex;
+}
+
+.block_mokitul .chat_provider_select{
+    background: inherit;
+    border: none;
+    flex-grow: 1;
+    color: inherit;
+}
+
+.block_mokitul .card-text{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
