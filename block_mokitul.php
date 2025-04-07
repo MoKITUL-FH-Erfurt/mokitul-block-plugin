@@ -23,14 +23,13 @@
  */
 class block_mokitul extends block_base
 {
-
     /**
      * Initializes class member variables.
      */
     public function init()
     {
         // Needed by Moodle to differentiate between blocks.
-        $this->title = get_string('pluginname', 'block_mokitul');
+        $this->title = get_string("pluginname", "block_mokitul");
     }
 
     /**
@@ -40,21 +39,21 @@ class block_mokitul extends block_base
      */
     public function get_content()
     {
-        $this->page->requires->css(new moodle_url('/local/mokitul/styles.css'));
+        $this->page->requires->css(new moodle_url("/local/mokitul/styles.css"));
 
         if ($this->content !== null) {
             return $this->content;
         }
 
         if (empty($this->instance)) {
-            $this->content = '';
+            $this->content = "";
             return $this->content;
         }
 
         $this->content = new stdClass();
-        $this->content->items = array();
-        $this->content->icons = array();
-        $this->content->footer = '';
+        $this->content->items = [];
+        $this->content->icons = [];
+        $this->content->footer = "";
 
         $chat_identifier = "mokitul_chat_";
 
@@ -62,7 +61,16 @@ class block_mokitul extends block_base
         if ($COURSE) {
             $chat_identifier = $chat_identifier . \core\uuid::generate();
 
-            $this->page->requires->js_call_amd('local_mokitul/lib', 'renderApp', array("element" => $chat_identifier, "courseId" => $COURSE->id, "preferredLayout" => "block"));
+            $this->page->requires->js_call_amd(
+                "local_mokitul/lib",
+                "renderApp",
+                [
+                    "element" => $chat_identifier,
+                    "course" => $COURSE->id,
+                    "file" => null,
+                    "preferredLayout" => "block",
+                ]
+            );
             // for a file we would use
             // $this->page->requires->js_call_amd('local_mokitul/lib', 'init', array("fileId" => $COURSE->id));
         }
@@ -71,7 +79,8 @@ class block_mokitul extends block_base
             $this->content->text = $this->config->text;
         } else {
             if ($COURSE) {
-                $this->content->text = '<div id="' . $chat_identifier . '" ></div>';
+                $this->content->text =
+                    '<div id="' . $chat_identifier . '" ></div>';
             }
         }
 
@@ -85,10 +94,9 @@ class block_mokitul extends block_base
      */
     public function specialization()
     {
-
         // Load user defined title and make sure it's never empty.
         if (empty($this->config->title)) {
-            $this->title = get_string('pluginname', 'block_mokitul');
+            $this->title = get_string("pluginname", "block_mokitul");
         } else {
             $this->title = $this->config->title;
         }
@@ -101,10 +109,10 @@ class block_mokitul extends block_base
      */
     public function applicable_formats()
     {
-        return array(
-            'all' => true,
+        return [
+            "all" => true,
             # 'course-view' => true,
             # 'course-view-social' => false,
-        );
+        ];
     }
 }
